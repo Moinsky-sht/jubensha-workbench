@@ -1,0 +1,22 @@
+# 依赖与构建产物
+node_modules/
+dist/
+
+# 运行时数据：作品库、附件、加密主密钥、备份与临时输出
+data/
+output/
+backups/
+
+# 密钥：只提交 .env.example
+.env
+.env.*
+!.env.example
+
+# 日志与系统垃圾
+*.log
+.DS_Store
+._*
+Thumbs.db
+
+# 工具缓存
+.playwright-cli/

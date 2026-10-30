@@ -1,0 +1,29 @@
+# 单实例、单用户。默认只绑定 127.0.0.1，公网访问请自行加 HTTPS 反向代理与鉴权。
+services:
+  workbench:
+    build:
+      context: .
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      HOST: 0.0.0.0
+      PORT: 4310
+      WORKBENCH_DATA: /data
+      TRUST_PROXY: 1
+    volumes:
+      - ./data:/data
+    ports:
+      - "127.0.0.1:4310:4310"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:4310/api/auth/status').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      start_period: 60s
+      retries: 3

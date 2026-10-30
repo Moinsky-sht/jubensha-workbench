@@ -1,0 +1,75 @@
+{
+  "name": "jubensha-workbench",
+  "private": true,
+  "version": "0.5.0",
+  "description": "叙事间 · 单用户剧本杀创作工作台：对象化剧本、版本化变更事务、主创智能体与交付导出",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Moinsky-sht/jubensha-workbench.git"
+  },
+  "homepage": "https://github.com/Moinsky-sht/jubensha-workbench#readme",
+  "keywords": [
+    "jubensha",
+    "murder-mystery",
+    "creative-writing",
+    "writing-tool",
+    "vue3",
+    "tiptap",
+    "sqlite",
+    "ai-agent"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "tsx server/index.ts",
+    "worker": "tsx server/worker.ts",
+    "build": "vue-tsc --noEmit && vite build",
+    "start": "cross-env NODE_ENV=production tsx server/index.ts",
+    "check": "vue-tsc --noEmit",
+    "test": "tsx --test tests/*.test.ts",
+    "backup": "tsx scripts/backup.ts",
+    "restore": "tsx scripts/restore.ts"
+  },
+  "dependencies": {
+    "@tiptap/core": "^3.31.3",
+    "@tiptap/extension-placeholder": "^3.0.0",
+    "@tiptap/extension-table": "^3.0.0",
+    "@tiptap/extension-unique-id": "^3.0.0",
+    "@tiptap/starter-kit": "^3.0.0",
+    "@tiptap/vue-3": "^3.0.0",
+    "@vue-flow/background": "^1.3.2",
+    "@vue-flow/controls": "^1.1.3",
+    "@vue-flow/core": "^1.48.2",
+    "@vue-flow/minimap": "^1.5.3",
+    "archiver": "^7.0.1",
+    "bcryptjs": "^3.0.2",
+    "docx": "^9.0.0",
+    "express": "^5.1.0",
+    "lucide-vue-next": "^0.468.0",
+    "mammoth": "^1.9.0",
+    "multer": "^2.0.2",
+    "pdf-parse": "^2.4.5",
+    "pdfjs-dist": "^6.3.289",
+    "pinia": "^3.0.0",
+    "playwright": "^1.56.0",
+    "sqlite-vec": "^0.1.9",
+    "vue": "^3.5.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/archiver": "^6.0.3",
+    "@types/express": "^5.0.0",
+    "@types/multer": "^2.0.0",
+    "@types/node": "^24.0.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "cross-env": "^10.1.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.20.0",
+    "typescript": "~5.9.0",
+    "vite": "^7.0.0",
+    "vue-tsc": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}

@@ -1,0 +1,22 @@
+# 最小 HTTPS 反向代理示例：把 4310 端口的工作台挂到自有域名之后。
+# 用法：改掉域名，把本文件放到 Caddy 能读到的位置，然后 `caddy reload`。
+#
+# 注意：本应用是单用户工作台、没有公众注册，但也没有内置多用户鉴权。
+# 若要对公网开放，请在反向代理或前置网关再加一层访问控制（IP 白名单 / Basic Auth / SSO）。
+
+example.com {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "SAMEORIGIN"
+		Referrer-Policy "same-origin"
+		-Server
+	}
+
+	# 流式响应与导出下载需要较长的超时
+	reverse_proxy 127.0.0.1:4310 {
+		flush_interval -1
+	}
+}

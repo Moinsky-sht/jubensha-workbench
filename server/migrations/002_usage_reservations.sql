@@ -1,0 +1,2 @@
+ALTER TABLE usage ADD COLUMN reserved_tokens INTEGER NOT NULL DEFAULT 0;
+ALTER TABLE usage ADD COLUMN reserved_cost REAL;
